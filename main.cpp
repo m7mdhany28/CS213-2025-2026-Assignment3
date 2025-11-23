@@ -6,11 +6,17 @@
 #include <ctime>
 #include "BoardGame_Classes.h"
 #include "Misere_Board.h"
+#include "FiveByFive_Board.h"
+#include "WordTicTacToe_Board.h"
+#include "Infinity_Board.h"
 #include "Simple_UI.h"
 using namespace std;
 
 // Function declarations
 void play_misere_game();
+void play_5x5_game();
+void play_word_game();
+void play_infinity_game();
 void display_welcome();
 void display_menu();
 int get_user_choice();
@@ -20,8 +26,7 @@ PlayerType choose_player_type(const string& player_label);
 string get_player_name(const string& player_label);
 
 int main() {
-    srand(static_cast<unsigned int>(time(0)));  // Seed for random computer moves
-    display_welcome();
+    srand(static_cast<unsigned int>(time(0)));
 
     while (true) {
         display_menu();
@@ -34,19 +39,19 @@ int main() {
             play_misere_game();
             break;
         case 2:
-            cout << "\nPreparing 5x5 Tic Tac Toe...\n";
-            cout << "This exciting expanded version is currently in development.\n";
-            cout << "Our team is working hard to deliver more strategic gameplay soon.\n";
+            cout << "\nStarting 5x5 Tic Tac Toe Game...\n";
+            cout << "Initializing expanded game board...\n";
+            play_5x5_game();
             break;
         case 3:
-            cout << "\nInitializing Four-in-a-Row...\n";
-            cout << "The classic vertical connect game is coming in our next release.\n";
-            cout << "Get ready for some gravity-defying fun!\n";
+            cout << "\nStarting Word Tic Tac Toe Game...\n";
+            cout << "Loading dictionary and word validation...\n";
+            play_word_game();
             break;
         case 4:
-            cout << "\nSetting up Word Tic Tac Toe...\n";
-            cout << "This vocabulary challenge is being fine-tuned for your enjoyment.\n";
-            cout << "Dictionary integration and word validation are being perfected.\n";
+            cout << "\nStarting Infinity Tic-Tac-Toe Game...\n";
+            cout << "Initializing temporal game mechanics...\n";
+            play_infinity_game();
             break;
         case 5:
             cout << "\nThank you for playing our Board Games Collection!\n";
@@ -71,11 +76,11 @@ void display_welcome() {
     cout << "           BOARD GAMES COLLECTION CENTER\n";
     cout << "======================================================\n";
     cout << "\nWelcome to our interactive gaming platform!\n";
-    cout << "\nAvailable Features:\n";
-    cout << "  - Multiple engaging board games in one application\n";
-    cout << "  - Play with friends or challenge computer opponents\n";
-    cout << "  - Various difficulty levels for computer players\n";
-    cout << "  - Intuitive interface and clear instructions\n";
+    cout << "\nNow featuring FOUR exciting games:\n";
+    cout << "  1. Misere Tic Tac Toe - Reverse psychology challenge\n";
+    cout << "  2. 5x5 Tic Tac Toe - Expanded strategic gameplay\n";
+    cout << "  3. Word Tic Tac Toe - Vocabulary building fun\n";
+    cout << "  4. Infinity Tic-Tac-Toe - Temporal memory challenge\n";
     cout << "\nSelect a game from the menu below to begin your adventure!\n";
 }
 
@@ -84,9 +89,9 @@ void display_menu() {
     cout << "           MAIN GAME SELECTION MENU\n";
     cout << string(50, '=') << "\n";
     cout << "1. Misere Tic Tac Toe (Reverse Rules)\n";
-    cout << "2. 5x5 Tic Tac Toe (Expanded Board) - Coming Soon\n";
-    cout << "3. Four-in-a-Row (Connect Game) - Coming Soon\n";
-    cout << "4. Word Tic Tac Toe (Vocabulary Challenge) - Coming Soon\n";
+    cout << "2. 5x5 Tic Tac Toe (Expanded Board)\n";
+    cout << "3. Word Tic Tac Toe (Vocabulary Challenge)\n";
+    cout << "4. Infinity Tic-Tac-Toe (Temporal Challenge)\n";
     cout << "5. Exit Game Collection\n";
     cout << string(50, '=') << "\n";
     cout << "Please enter your selection (1-5): ";
@@ -152,8 +157,15 @@ PlayerType choose_player_type(const string& player_label) {
 
 string get_player_name(const string& player_label) {
     string name;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     cout << "Please enter a name for " << player_label << ": ";
     getline(cin, name);
+
+    name.erase(0, name.find_first_not_of(" \t\n\r\f\v"));
+    name.erase(name.find_last_not_of(" \t\n\r\f\v") + 1);
+
     if (name.empty()) {
         name = player_label;
         cout << "Using default name: " << name << "\n";
@@ -178,21 +190,17 @@ void play_misere_game() {
     cout << "  - Think carefully: Avoid making lines yourself!\n";
     cout << "\nLet's set up the players and begin the game!\n";
 
-    // Create game components
     Board<char>* board = new Misere_Board();
-    UI<char>* ui = new Simple_UI(board);
+    UI<char>* ui = new Simple_UI(board, "misere");
 
-    // Player setup
     cout << "\n" << string(40, '-') << "\n";
     cout << "PLAYER CONFIGURATION\n";
     cout << string(40, '-') << "\n";
 
-    // Player 1 setup
     cout << "\nConfiguring first player (will use X symbol):\n";
     string name1 = get_player_name("First Player");
     PlayerType type1 = choose_player_type("First Player");
 
-    // Player 2 setup  
     cout << "\nConfiguring second player (will use O symbol):\n";
     string name2 = get_player_name("Second Player");
     PlayerType type2 = choose_player_type("Second Player");
@@ -207,16 +215,15 @@ void play_misere_game() {
     cout << string(50, '-') << "\n";
 
     if (type1 != PlayerType::HUMAN) {
-        cout << "Note: " << name1 << " is controlled by the computer\n";
+        cout << "Note: " << name1 << " is computer controlled\n";
     }
     if (type2 != PlayerType::HUMAN) {
-        cout << "Note: " << name2 << " is controlled by the computer\n";
+        cout << "Note: " << name2 << " is computer controlled\n";
     }
 
     cout << "\nThe game board is displayed below.\n";
     cout << "Columns are numbered 0-2 at the top, rows 0-2 on the left.\n";
 
-    // Custom game loop for Misere rules
     ui->display_board_matrix(board->get_board_matrix());
 
     while (true) {
@@ -235,7 +242,6 @@ void play_misere_game() {
 
             ui->display_board_matrix(board->get_board_matrix());
 
-            // MISERE RULES: If you get 3 in a row, YOU LOSE
             if (board->is_win(current)) {
                 cout << string(60, '=') << "\n";
                 cout << "GAME OVER - FINAL RESULT\n";
@@ -265,12 +271,328 @@ void play_misere_game() {
     }
 
 game_over:
-    // Cleanup
     delete board;
     delete players[0];
     delete players[1];
     delete ui;
 
     cout << "\nMisere Tic Tac Toe game has concluded.\n";
+    cout << "Thank you for playing! Returning to the main menu...\n";
+}
+
+void play_5x5_game() {
+    cout << "\n" << string(60, '=') << "\n";
+    cout << "          5x5 TIC TAC TOE - EXPANDED CHALLENGE\n";
+    cout << string(60, '=') << "\n";
+    cout << "\nWelcome to 5x5 Tic Tac Toe!\n";
+    cout << "\nGame Rules - Strategic Sequence Building:\n";
+    cout << "  - Play on a larger 5x5 grid instead of traditional 3x3\n";
+    cout << "  - Create as many three-in-a-row sequences as possible\n";
+    cout << "  - Game continues until only one square remains empty\n";
+    cout << "  - Player with the most sequences at the end wins\n";
+    cout << "  - Total moves: 24 (12 for each player)\n";
+    cout << "\nHow to Play:\n";
+    cout << "  - Players take turns placing X and O on a 5x5 grid\n";
+    cout << "  - Enter coordinates as ROW then COLUMN (both 0-4)\n";
+    cout << "  - Multiple three-in-a-row sequences can overlap\n";
+    cout << "  - Think strategically to maximize your sequences!\n";
+    cout << "\nLet's set up the players and begin the game!\n";
+
+    FiveByFive_Board* board = new FiveByFive_Board();
+    Simple_UI* ui = new Simple_UI(board, "5x5");
+
+    cout << "\n" << string(40, '-') << "\n";
+    cout << "PLAYER CONFIGURATION\n";
+    cout << string(40, '-') << "\n";
+
+    cout << "\nConfiguring first player (will use X symbol):\n";
+    string name1 = get_player_name("First Player");
+    PlayerType type1 = choose_player_type("First Player");
+
+    cout << "\nConfiguring second player (will use O symbol):\n";
+    string name2 = get_player_name("Second Player");
+    PlayerType type2 = choose_player_type("Second Player");
+
+    Player<char>* players[2] = {
+        new Player<char>(name1, 'X', type1),
+        new Player<char>(name2, 'O', type2)
+    };
+
+    cout << "\n" << string(50, '-') << "\n";
+    cout << "GAME STARTING: " << name1 << " (X) vs " << name2 << " (O)\n";
+    cout << string(50, '-') << "\n";
+
+    if (type1 != PlayerType::HUMAN) cout << "Note: " << name1 << " is computer controlled\n";
+    if (type2 != PlayerType::HUMAN) cout << "Note: " << name2 << " is computer controlled\n";
+
+    cout << "\nThe 5x5 game board is displayed below.\n";
+    cout << "Columns are numbered 0-4 at the top, rows 0-4 on the left.\n";
+
+    ui->display_board_matrix(board->get_board_matrix());
+
+    while (true) {
+        for (int i : {0, 1}) {
+            Player<char>* current = players[i];
+
+            Move<char>* move = ui->get_move(current);
+
+            while (!board->update_board(move)) {
+                cout << "That move cannot be made. The position may be already occupied or invalid.\n";
+                cout << "Please select an empty position on the board.\n";
+                delete move;
+                move = ui->get_move(current);
+            }
+
+            ui->display_board_matrix(board->get_board_matrix());
+
+            if (board->game_is_over(current)) {
+                int player1_lines = board->count_player_lines('X');
+                int player2_lines = board->count_player_lines('O');
+
+                cout << "\n" << string(50, '=') << "\n";
+                cout << "GAME OVER - FINAL SCORE\n";
+                cout << string(50, '=') << "\n";
+                cout << players[0]->get_name() << " (X): " << player1_lines << " three-in-a-row sequences\n";
+                cout << players[1]->get_name() << " (O): " << player2_lines << " three-in-a-row sequences\n";
+
+                if (player1_lines > player2_lines) {
+                    cout << "WINNER: " << players[0]->get_name() << "!\n";
+                }
+                else if (player2_lines > player1_lines) {
+                    cout << "WINNER: " << players[1]->get_name() << "!\n";
+                }
+                else {
+                    cout << "The game is a TIE!\n";
+                }
+                cout << string(50, '=') << "\n";
+                delete move;
+                goto game_over;
+            }
+
+            delete move;
+        }
+    }
+
+game_over:
+    delete board;
+    delete players[0];
+    delete players[1];
+    delete ui;
+
+    cout << "\n5x5 Tic Tac Toe game has concluded.\n";
+    cout << "Thank you for playing! Returning to the main menu...\n";
+}
+
+void play_word_game() {
+    cout << "\n" << string(60, '=') << "\n";
+    cout << "          WORD TIC TAC TOE - VOCABULARY CHALLENGE\n";
+    cout << string(60, '=') << "\n";
+    cout << "\nWelcome to Word Tic Tac Toe!\n";
+    cout << "\nGame Rules - Word Building Strategy:\n";
+    cout << "  - Players place letters on a 3x3 grid\n";
+    cout << "  - Goal: Form valid three-letter words\n";
+    cout << "  - Words can be horizontal, vertical, or diagonal\n";
+    cout << "  - First player to form a valid word wins immediately\n";
+    cout << "  - If board fills with no valid words: It's a draw\n";
+    cout << "  - Dictionary of valid words is provided\n";
+    cout << "\nHow to Play:\n";
+    cout << "  - Players choose ANY letter (A-Z) for each move\n";
+    cout << "  - Then enter coordinates as ROW then COLUMN (both 0-2)\n";
+    cout << "  - Build upon existing letters to form words\n";
+    cout << "  - Think about word possibilities with each move!\n";
+    cout << "\nLet's set up the players and begin the word challenge!\n";
+
+    WordTicTacToe_Board* board = new WordTicTacToe_Board();
+    Simple_UI* ui = new Simple_UI(board, "word");
+
+    cout << "\n" << string(40, '-') << "\n";
+    cout << "PLAYER CONFIGURATION\n";
+    cout << string(40, '-') << "\n";
+
+    cout << "\nConfiguring first player:\n";
+    string name1 = get_player_name("First Player");
+    PlayerType type1 = choose_player_type("First Player");
+
+    cout << "\nConfiguring second player:\n";
+    string name2 = get_player_name("Second Player");
+    PlayerType type2 = choose_player_type("Second Player");
+
+    Player<char>* players[2] = {
+        new Player<char>(name1, '?', type1),
+        new Player<char>(name2, '?', type2)
+    };
+
+    cout << "\n" << string(50, '-') << "\n";
+    cout << "GAME STARTING: " << name1 << " vs " << name2 << "\n";
+    cout << string(50, '-') << "\n";
+
+    if (type1 != PlayerType::HUMAN) cout << "Note: " << name1 << " is computer controlled\n";
+    if (type2 != PlayerType::HUMAN) cout << "Note: " << name2 << " is computer controlled\n";
+
+    cout << "\nThe word game board is displayed below.\n";
+    cout << "Build three-letter words horizontally, vertically, or diagonally!\n";
+
+    ui->display_board_matrix(board->get_board_matrix());
+
+    while (true) {
+        for (int i : {0, 1}) {
+            Player<char>* current = players[i];
+            Player<char>* opponent = players[1 - i];
+
+            Move<char>* move = ui->get_move(current);
+
+            while (!board->update_board(move)) {
+                cout << "That move cannot be made. The position may be already occupied or invalid.\n";
+                cout << "Please select an empty position on the board.\n";
+                delete move;
+                move = ui->get_move(current);
+            }
+
+            ui->display_board_matrix(board->get_board_matrix());
+
+            if (board->is_win(current)) {
+                string winning_word = board->get_winning_word();
+                cout << "\n" << string(50, '=') << "\n";
+                cout << "GAME OVER - WORD FOUND!\n";
+                cout << string(50, '=') << "\n";
+                cout << "Winning word: " << winning_word << "\n";
+                cout << "WINNER: " << current->get_name() << "!\n";
+                cout << "Congratulations for forming a valid word!\n";
+                cout << string(50, '=') << "\n";
+                delete move;
+                goto game_over;
+            }
+
+            if (board->is_draw(current)) {
+                cout << string(50, '=') << "\n";
+                cout << "GAME OVER - FINAL RESULT\n";
+                cout << string(50, '=') << "\n";
+                cout << "The game ends in a draw!\n";
+                cout << "No valid three-letter words were formed on the board.\n";
+                cout << "Excellent defensive play by both competitors!\n";
+                cout << string(50, '=') << "\n";
+                delete move;
+                goto game_over;
+            }
+
+            delete move;
+        }
+    }
+
+game_over:
+    delete board;
+    delete players[0];
+    delete players[1];
+    delete ui;
+
+    cout << "\nWord Tic Tac Toe game has concluded.\n";
+    cout << "Thank you for playing! Returning to the main menu...\n";
+}
+
+void play_infinity_game() {
+    cout << "\n" << string(60, '=') << "\n";
+    cout << "       INFINITY TIC-TAC-TOE - TEMPORAL CHALLENGE\n";
+    cout << string(60, '=') << "\n";
+    cout << "\nWelcome to Infinity Tic-Tac-Toe!\n";
+    cout << "\nGame Rules - The Memory Challenge:\n";
+    cout << "  - Standard 3x3 Tic-Tac-Toe rules apply\n";
+    cout << "  - BUT: After every 3 moves, the OLDEST mark disappears\n";
+    cout << "  - Your marks have limited time on the board\n";
+    cout << "  - Strategy: Create winning lines before they vanish!\n";
+    cout << "  - Timing is everything in this temporal battle!\n";
+    cout << "\nHow to Play:\n";
+    cout << "  - Players take turns placing X and O\n";
+    cout << "  - Enter coordinates as ROW then COLUMN (both 0-2)\n";
+    cout << "  - Watch the counter: 'Moves until removal: X'\n";
+    cout << "  - Plan your sequences around the disappearing marks!\n";
+    cout << "\nLet's begin the infinite challenge!\n";
+
+    Board<char>* board = new Infinity_Board();
+    UI<char>* ui = new Simple_UI(board, "infinity");
+
+    cout << "\n" << string(40, '-') << "\n";
+    cout << "PLAYER CONFIGURATION\n";
+    cout << string(40, '-') << "\n";
+
+    cout << "\nConfiguring first player (will use X symbol):\n";
+    string name1 = get_player_name("First Player");
+    PlayerType type1 = choose_player_type("First Player");
+
+    cout << "\nConfiguring second player (will use O symbol):\n";
+    string name2 = get_player_name("Second Player");
+    PlayerType type2 = choose_player_type("Second Player");
+
+    Player<char>* players[2] = {
+        new Player<char>(name1, 'X', type1),
+        new Player<char>(name2, 'O', type2)
+    };
+
+    cout << "\n" << string(50, '-') << "\n";
+    cout << "GAME STARTING: " << name1 << " (X) vs " << name2 << " (O)\n";
+    cout << string(50, '-') << "\n";
+
+    if (type1 != PlayerType::HUMAN) cout << "Note: " << name1 << " is computer controlled\n";
+    if (type2 != PlayerType::HUMAN) cout << "Note: " << name2 << " is computer controlled\n";
+
+    cout << "\nThe infinity game board is displayed below.\n";
+    cout << "Marks will disappear every 3 moves - plan accordingly!\n";
+
+    ui->display_board_matrix(board->get_board_matrix());
+
+    while (true) {
+        for (int i : {0, 1}) {
+            Player<char>* current = players[i];
+            Player<char>* opponent = players[1 - i];
+
+            Infinity_Board* infinity_board = dynamic_cast<Infinity_Board*>(board);
+            if (infinity_board) {
+                int countdown = infinity_board->get_next_removal_countdown();
+                cout << "\nMoves until next removal: " << countdown << "\n";
+            }
+
+            Move<char>* move = ui->get_move(current);
+
+            while (!board->update_board(move)) {
+                cout << "That move cannot be made. The position may be already occupied or invalid.\n";
+                cout << "Please select an empty position on the board.\n";
+                delete move;
+                move = ui->get_move(current);
+            }
+
+            ui->display_board_matrix(board->get_board_matrix());
+
+            if (board->is_win(current)) {
+                cout << string(60, '=') << "\n";
+                cout << "GAME OVER - TEMPORAL VICTORY!\n";
+                cout << string(60, '=') << "\n";
+                ui->display_message(current->get_name() + " achieved three in a row before time ran out!");
+                ui->display_message("Congratulations on mastering the temporal challenge!");
+                cout << string(60, '=') << "\n";
+                delete move;
+                goto game_over;
+            }
+
+            if (board->is_draw(current)) {
+                cout << string(60, '=') << "\n";
+                cout << "GAME OVER - TEMPORAL STALEMATE\n";
+                cout << string(60, '=') << "\n";
+                ui->display_message("The temporal battle ends in a draw!");
+                ui->display_message("Both players adapted well to the disappearing marks!");
+                cout << string(60, '=') << "\n";
+                delete move;
+                goto game_over;
+            }
+
+            delete move;
+        }
+    }
+
+game_over:
+    delete board;
+    delete players[0];
+    delete players[1];
+    delete ui;
+
+    cout << "\nInfinity Tic-Tac-Toe game has concluded.\n";
     cout << "Thank you for playing! Returning to the main menu...\n";
 }

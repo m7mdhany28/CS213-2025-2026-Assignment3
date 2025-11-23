@@ -6,6 +6,7 @@
 #include "Misere_Board.h"
 #include "FiveByFive_Board.h"
 #include "WordTicTacToe_Board.h"
+#include "Infinity_Board.h"
 #include <limits>
 #include <cstdlib>
 #include <ctime>
@@ -25,6 +26,9 @@ public:
         }
         else if (game_type == "5x5") {
             cout << "5x5 Tic Tac Toe - Create the most 3-in-a-row sequences!\n";
+        }
+        else if (game_type == "infinity") {
+            cout << "Infinity Tic-Tac-Toe - Marks disappear every 3 moves!\n";
         }
         else {
             cout << "Misere Tic Tac Toe - Remember: 3 in a row means you lose!\n";
@@ -143,6 +147,9 @@ private:
         }
         else if (game_type == "5x5") {
             return get_smart_5x5_move(player);
+        }
+        else if (game_type == "infinity") {
+            return get_smart_infinity_move(player);
         }
         else {
             return get_smart_misere_move(player);
@@ -276,6 +283,43 @@ private:
         }
 
         cout << "Smart AI makes defensive move.\n";
+        return get_random_move(player);
+    }
+
+    Move<char>* get_smart_infinity_move(Player<char>* player) {
+        Infinity_Board* board = dynamic_cast<Infinity_Board*>(game_board);
+        if (!board) return get_random_move(player);
+
+        vector<vector<char>> board_matrix = board->get_board_matrix();
+        char symbol = player->get_symbol();
+        char opponent_symbol = (symbol == 'X') ? 'O' : 'X';
+        int removal_countdown = board->get_next_removal_countdown();
+
+        if (removal_countdown == 1) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (board_matrix[i][j] == 0) {
+                        board_matrix[i][j] = symbol;
+                        if (would_create_three_in_row(board_matrix, symbol, i, j)) {
+                            cout << "Smart AI rushes to complete sequence before removal: " << i << " " << j << "\n";
+                            return new Move<char>(i, j, symbol);
+                        }
+                        board_matrix[i][j] = 0;
+                    }
+                }
+            }
+        }
+
+        vector<pair<int, int>> center_first = { {1,1}, {0,0}, {0,2}, {2,0}, {2,2}, {0,1}, {1,0}, {1,2}, {2,1} };
+
+        for (auto pos : center_first) {
+            if (board_matrix[pos.first][pos.second] == 0) {
+                cout << "Smart AI takes strategic position: " << pos.first << " " << pos.second << "\n";
+                return new Move<char>(pos.first, pos.second, symbol);
+            }
+        }
+
+        cout << "Smart AI makes a calculated move.\n";
         return get_random_move(player);
     }
 
