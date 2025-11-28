@@ -1,4 +1,4 @@
-﻿#ifndef _BOARDGAME_CLASSES_H
+#ifndef _BOARDGAME_CLASSES_H
 #define _BOARDGAME_CLASSES_H
 
 #include <string>
@@ -49,8 +49,7 @@ public:
      * @brief Construct a board with given dimensions.
      */
     Board(int rows, int columns)
-        : rows(rows), columns(columns), board(rows, vector<T>(columns)) {
-    }
+        : rows(rows), columns(columns), board(rows, vector<T>(columns)) {}
 
     /**
      * @brief Virtual destructor. Frees allocated board memory.
@@ -81,6 +80,10 @@ public:
      */
     vector<vector<T>> get_board_matrix() const {
         return board;
+    }
+
+    T get_cell(int x, int y) {
+        return board[x][y];
     }
 
     /** @brief Get number of rows. */
@@ -135,8 +138,7 @@ public:
      * @brief Construct a player with name, symbol, and type.
      */
     Player(string n, T s, PlayerType t)
-        : name(n), symbol(s), type(t), boardPtr(nullptr) {
-    }
+        : name(n), symbol(s), type(t), boardPtr(nullptr) {}
 
     virtual ~Player() {}
 
