@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #ifndef FOURBYFOUR_MOVING_BOARD_H
 #define FOURBYFOUR_MOVING_BOARD_H
 

@@ -1,4 +1,4 @@
-#ifndef _BOARDGAME_CLASSES_H
+ï»¿#ifndef _BOARDGAME_CLASSES_H
 #define _BOARDGAME_CLASSES_H
 
 #include <string>
@@ -127,7 +127,7 @@ class Player {
 protected:
     string name;         ///< Player name
     PlayerType type;     ///< Player type (e.g., HUMAN or COMPUTER)
-    T symbol;            ///< Player’s symbol on board
+    T symbol;            ///< Playerï¿½s symbol on board
     Board<T>* boardPtr;  ///< Pointer to the game board
 
 public:

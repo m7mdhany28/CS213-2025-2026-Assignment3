@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #ifndef INFINITY_BOARD_H
 #define INFINITY_BOARD_H
 
