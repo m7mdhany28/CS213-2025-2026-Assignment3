@@ -73,141 +73,141 @@ CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o: CMakeFiles/BoardGames.dir/f
 CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp
 CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o -MF CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o.d -o CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o -MF CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o.d -o CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp"
 
 CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp" > CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp" > CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.i
 
 CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp" -o CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_Board.cpp" -o CMakeFiles/BoardGames.dir/src/FourInRow_Board.cpp.s
 
 CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp
 CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o -MF CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o.d -o CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o -MF CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o.d -o CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp"
 
 CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp" > CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp" > CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.i
 
 CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp" -o CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/FourInRow_UI.cpp" -o CMakeFiles/BoardGames.dir/src/FourInRow_UI.cpp.s
 
 CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp
 CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o -MF CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o.d -o CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o -MF CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o.d -o CMakeFiles/BoardGames.dir/src/MainScreen.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp"
 
 CMakeFiles/BoardGames.dir/src/MainScreen.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/MainScreen.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp" > CMakeFiles/BoardGames.dir/src/MainScreen.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp" > CMakeFiles/BoardGames.dir/src/MainScreen.cpp.i
 
 CMakeFiles/BoardGames.dir/src/MainScreen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/MainScreen.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp" -o CMakeFiles/BoardGames.dir/src/MainScreen.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/MainScreen.cpp" -o CMakeFiles/BoardGames.dir/src/MainScreen.cpp.s
 
 CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp
 CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o -MF CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o.d -o CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o -MF CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o.d -o CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp"
 
 CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp" > CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp" > CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.i
 
 CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp" -o CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_Board.cpp" -o CMakeFiles/BoardGames.dir/src/Numerical_Board.cpp.s
 
 CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp
 CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o -MF CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o.d -o CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o -MF CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o.d -o CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp"
 
 CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp" > CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp" > CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.i
 
 CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp" -o CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/Numerical_UI.cpp" -o CMakeFiles/BoardGames.dir/src/Numerical_UI.cpp.s
 
 CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp
 CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o -MF CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o.d -o CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o -MF CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o.d -o CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp"
 
 CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp" > CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp" > CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.i
 
 CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp" -o CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/PlayGameFunctions.cpp" -o CMakeFiles/BoardGames.dir/src/PlayGameFunctions.cpp.s
 
 CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp
 CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o -MF CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o.d -o CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o -MF CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o.d -o CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp"
 
 CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp" > CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp" > CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.i
 
 CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp" -o CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_Board.cpp" -o CMakeFiles/BoardGames.dir/src/SUS_Board.cpp.s
 
 CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp
 CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o -MF CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o.d -o CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o -MF CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o.d -o CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp"
 
 CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp" > CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp" > CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.i
 
 CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp" -o CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/SUS_UI.cpp" -o CMakeFiles/BoardGames.dir/src/SUS_UI.cpp.s
 
 CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp
 CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o -MF CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o.d -o CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o -MF CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o.d -o CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp"
 
 CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp" > CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp" > CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.i
 
 CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp" -o CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/XO_Classes.cpp" -o CMakeFiles/BoardGames.dir/src/XO_Classes.cpp.s
 
 CMakeFiles/BoardGames.dir/src/main.cpp.o: CMakeFiles/BoardGames.dir/flags.make
 CMakeFiles/BoardGames.dir/src/main.cpp.o: /home/ahmed-shawareb/VSCode\ projects/CS213-2025-2026-Assignment3/src/main.cpp
 CMakeFiles/BoardGames.dir/src/main.cpp.o: CMakeFiles/BoardGames.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/BoardGames.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/main.cpp.o -MF CMakeFiles/BoardGames.dir/src/main.cpp.o.d -o CMakeFiles/BoardGames.dir/src/main.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/main.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BoardGames.dir/src/main.cpp.o -MF CMakeFiles/BoardGames.dir/src/main.cpp.o.d -o CMakeFiles/BoardGames.dir/src/main.cpp.o -c "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/main.cpp"
 
 CMakeFiles/BoardGames.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BoardGames.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/main.cpp" > CMakeFiles/BoardGames.dir/src/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/main.cpp" > CMakeFiles/BoardGames.dir/src/main.cpp.i
 
 CMakeFiles/BoardGames.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BoardGames.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/main.cpp" -o CMakeFiles/BoardGames.dir/src/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/ahmed-shawareb/VSCode projects/CS213-2025-2026-Assignment3/src/main.cpp" -o CMakeFiles/BoardGames.dir/src/main.cpp.s
 
 # Object files for target BoardGames
 BoardGames_OBJECTS = \
