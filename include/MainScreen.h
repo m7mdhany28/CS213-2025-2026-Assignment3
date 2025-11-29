@@ -15,6 +15,8 @@ private :
         WORD = 8,
         MOVING = 9,
         PYRAMID = 10,
+        MEMORYGAME = 11
+
     };
 public :
 

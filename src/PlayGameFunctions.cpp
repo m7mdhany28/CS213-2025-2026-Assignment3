@@ -19,6 +19,8 @@
 #include "pyramid_tic_tac_toe.h"
 #include "Simple_UI.h"
 #include <limits>
+#include"MemoryGame_Board.h"
+#include"MemoryGame_UI.h"
 
 using namespace std;
 
@@ -585,4 +587,26 @@ void PlayGameFunctions::playPyramidGame() {
         string winnerName = (winner == 'X') ? name1 : name2;
         cout << "Congratulations " << winnerName << "!\n";
     }
+}
+
+void PlayGameFunctions::playMemoryGame(){
+    UI<char>* game_ui = new MemoryGame_UI();
+
+    Board<char>* MemoryGameBoard = new MemoryGame_Board();
+
+    Player<char>** players = game_ui->setup_players();
+
+    GameManager<char> MemoryGame(MemoryGameBoard , players , game_ui);
+
+    MemoryGame.run();
+
+    delete MemoryGameBoard;
+    
+    for(int i = 0 ; i < 2 ; ++i){
+        delete players[i];
+    }
+
+    delete game_ui;
+
+    delete[] players;
 }

@@ -17,6 +17,7 @@ public :
     static void playWordGame();
     static void playMovingGame();
     static void playPyramidGame();
+    static void playMemoryGame();
 };
 
 #endif
