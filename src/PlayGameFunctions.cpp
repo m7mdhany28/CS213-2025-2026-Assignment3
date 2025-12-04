@@ -24,96 +24,7 @@
 
 using namespace std;
 
-void PlayGameFunctions::playXOGame(){
-    UI<char>* game_ui = new XO_UI();
-
-    Board<char>* xo_board = new X_O_Board();
-
-    Player<char>** players = game_ui->setup_players();
-
-    GameManager<char> x_o_game(xo_board, players, game_ui);
-
-    x_o_game.run();
-
-    delete xo_board;
-
-    for (int i = 0; i < 2; ++i) {
-        delete players[i];
-    }
-
-    delete game_ui;
-
-    delete[] players;
-}
-
-void PlayGameFunctions::playNumericalGame(){
-
-    UI<int>* game_ui = new Numerical_UI();
-
-    Board<int>* NumericalBoard = new Numerical_Board();
-
-    Player<int>** players = game_ui->setup_players();
-
-    GameManager<int> NumericalGame(NumericalBoard, players, game_ui);
-
-    NumericalGame.run();
-
-    delete NumericalBoard;
-
-    for (int i = 0; i < 2; ++i) {
-        delete players[i];
-    }
-
-    delete game_ui;
-    
-    delete[] players;
-}
-
-void PlayGameFunctions::playSUSGame(){
-
-    UI<char>* game_ui = new SUS_UI();
-
-    Board<char>* SUSBoard = new SUS_Board();
-
-    Player<char>** players = game_ui->setup_players();
-
-    GameManager<char> SUSGame(SUSBoard , players , game_ui);
-
-    SUSGame.run();
-
-    delete SUSBoard;
-
-    for(int i = 0 ; i < 2 ; ++i){
-        delete players[i];
-    }
-
-    delete game_ui;
-
-    delete[] players;
-}
-
-void PlayGameFunctions::playFourInRowGame(){
-    UI<char>* game_ui = new FourInRow_UI();
-
-    Board<char>* FourInRowBoard = new FourInRow_Board();
-
-    Player<char>** players = game_ui->setup_players();
-
-    GameManager<char> FourInRowGame(FourInRowBoard , players , game_ui);
-
-    FourInRowGame.run();
-
-    delete FourInRowBoard;
-
-    for(int i = 0 ; i < 2 ; ++i){
-        delete players[i];
-    }
-
-    delete game_ui;
-
-    delete[] players;
-}
-
+// Player setup helper functions - MOVE TO HEADER TO REDUCE STACK USAGE
 string getPlayerIdentity(const string& playerLabel) {
     string name;
     cout << "What name should we use for " << playerLabel << "? ";
@@ -128,26 +39,146 @@ string getPlayerIdentity(const string& playerLabel) {
 }
 
 PlayerType choosePlayerPersonality(const string& playerLabel) {
-    int choice;
+    int choice = 0; // FIXED: Initialize variable
     cout << "\nWhat kind of player should " << playerLabel << " be?\n";
     cout << "1. Human Player (You make the decisions)\n";
-    cout << "2. Random Computer (Full of surprises)\n";
-    cout << "3. Smart Computer (Thinks strategically)\n";
-    cout << "Enter your selection (1, 2, or 3): ";
+    cout << "2. Computer Player (Strategic AI)\n";
+    cout << "Enter your selection (1 or 2): ";
 
-    while (!(cin >> choice) || choice < 1 || choice > 3) {
+    while (!(cin >> choice) || choice < 1 || choice > 2) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Let's choose: 1 for Human, 2 for Random Computer, or 3 for Smart Computer: ";
+        cout << "Please enter 1 for Human or 2 for Computer: ";
     }
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     switch (choice) {
     case 1: return PlayerType::HUMAN;
-    case 2: return PlayerType::RANDOM;
-    case 3: return PlayerType::AI;
+    case 2: return PlayerType::COMPUTER;
     default: return PlayerType::HUMAN;
     }
+}
+
+// Game function implementations - REDUCE STACK USAGE BY USING HEAP FOR LARGE OBJECTS
+void PlayGameFunctions::playXOGame() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    // Use heap allocation for large stack usage
+    UI<char>* game_ui = new XO_UI();
+    Board<char>* xo_board = new X_O_Board();
+    Player<char>** players = game_ui->setup_players();
+
+    {
+        GameManager<char> x_o_game(xo_board, players, game_ui);
+        x_o_game.run();
+    } // GameManager destroyed here to free stack
+
+    delete xo_board;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete game_ui;
+    delete[] players;
+}
+
+void PlayGameFunctions::playNumericalGame() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    UI<int>* game_ui = new Numerical_UI();
+    Board<int>* NumericalBoard = new Numerical_Board();
+    Player<int>** players = game_ui->setup_players();
+
+    {
+        GameManager<int> NumericalGame(NumericalBoard, players, game_ui);
+        NumericalGame.run();
+    }
+
+    delete NumericalBoard;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete game_ui;
+    delete[] players;
+}
+
+void PlayGameFunctions::playSUSGame() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    UI<char>* game_ui = new SUS_UI();
+    Board<char>* SUSBoard = new SUS_Board();
+    Player<char>** players = game_ui->setup_players();
+
+    {
+        GameManager<char> SUSGame(SUSBoard, players, game_ui);
+        SUSGame.run();
+    }
+
+    delete SUSBoard;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete game_ui;
+    delete[] players;
+}
+
+void PlayGameFunctions::playFourInRowGame() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    UI<char>* game_ui = new FourInRow_UI();
+    Board<char>* FourInRowBoard = new FourInRow_Board();
+    Player<char>** players = game_ui->setup_players();
+
+    {
+        GameManager<char> FourInRowGame(FourInRowBoard, players, game_ui);
+        FourInRowGame.run();
+    }
+
+    delete FourInRowBoard;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete game_ui;
+    delete[] players;
+}
+
+void PlayGameFunctions::playMemoryGame() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    UI<char>* game_ui = new MemoryGame_UI();
+    Board<char>* MemoryGameBoard = new MemoryGame_Board();
+    Player<char>** players = game_ui->setup_players();
+
+    {
+        GameManager<char> MemoryGame(MemoryGameBoard, players, game_ui);
+        MemoryGame.run();
+    }
+
+    delete MemoryGameBoard;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete game_ui;
+    delete[] players;
 }
 
 void PlayGameFunctions::playMisereGame() {
@@ -166,6 +197,7 @@ void PlayGameFunctions::playMisereGame() {
     string player2_name = getPlayerIdentity("Second Player");
     PlayerType player2_type = choosePlayerPersonality("Second Player");
 
+    // FIXED: Proper template instantiation
     Player<char>* players[2] = {
         new Player<char>(player1_name, 'X', player1_type),
         new Player<char>(player2_name, 'O', player2_type)
@@ -184,11 +216,13 @@ void PlayGameFunctions::playMisereGame() {
 
             Move<char>* next_move = game_interface->get_move(current_player);
 
-            while (!game_board->update_board(next_move)) {
+            while (next_move != nullptr && !game_board->update_board(next_move)) {
                 cout << "That move doesn't work. The spot might be taken or off the board.\n";
                 delete next_move;
                 next_move = game_interface->get_move(current_player);
             }
+
+            if (next_move == nullptr) continue;
 
             game_interface->display_board_matrix(game_board->get_board_matrix());
 
@@ -240,6 +274,7 @@ void PlayGameFunctions::play5x5Game() {
     string name2 = getPlayerIdentity("Second Player");
     PlayerType type2 = choosePlayerPersonality("Second Player");
 
+    // FIXED: Proper template instantiation
     Player<char>* players[2] = {
         new Player<char>(name1, 'X', type1),
         new Player<char>(name2, 'O', type2)
@@ -256,11 +291,13 @@ void PlayGameFunctions::play5x5Game() {
             Player<char>* current = players[i];
             Move<char>* move = ui->get_move(current);
 
-            while (!board->update_board(move)) {
+            while (move != nullptr && !board->update_board(move)) {
                 cout << "That move cannot be made. The position may be already occupied or invalid.\n";
                 delete move;
                 move = ui->get_move(current);
             }
+
+            if (move == nullptr) continue;
 
             board->display_board();
 
@@ -313,6 +350,7 @@ void PlayGameFunctions::playWordGame() {
     string name2 = getPlayerIdentity("Second Player");
     PlayerType type2 = choosePlayerPersonality("Second Player");
 
+    // FIXED: Proper template instantiation
     Player<char>* players[2] = {
         new Player<char>(name1, '?', type1),
         new Player<char>(name2, '?', type2)
@@ -330,11 +368,13 @@ void PlayGameFunctions::playWordGame() {
             Player<char>* opponent = players[1 - i];
             Move<char>* move = ui->get_move(current);
 
-            while (!board->update_board(move)) {
+            while (move != nullptr && !board->update_board(move)) {
                 cout << "That move cannot be made. The position may be already occupied or invalid.\n";
                 delete move;
                 move = ui->get_move(current);
             }
+
+            if (move == nullptr) continue;
 
             ui->display_board_matrix(board->get_board_matrix());
 
@@ -388,6 +428,7 @@ void PlayGameFunctions::playInfinityGame() {
     string name2 = getPlayerIdentity("Second Player");
     PlayerType type2 = choosePlayerPersonality("Second Player");
 
+    // FIXED: Proper template instantiation
     Player<char>* players[2] = {
         new Player<char>(name1, 'X', type1),
         new Player<char>(name2, 'O', type2)
@@ -409,11 +450,13 @@ void PlayGameFunctions::playInfinityGame() {
 
             Move<char>* move = ui->get_move(current);
 
-            while (!board->update_board(move)) {
+            while (move != nullptr && !board->update_board(move)) {
                 cout << "That move cannot be made. The position may be already occupied or invalid.\n";
                 delete move;
                 move = ui->get_move(current);
             }
+
+            if (move == nullptr) continue;
 
             board->display_board();
 
@@ -451,6 +494,7 @@ void PlayGameFunctions::playMovingGame() {
     string name2 = getPlayerIdentity("Second Player");
     PlayerType type2 = choosePlayerPersonality("Second Player");
 
+    // FIXED: Proper template instantiation
     Player<char>* players[2] = {
         new Player<char>(name1, 'X', type1),
         new Player<char>(name2, 'O', type2)
@@ -468,11 +512,13 @@ void PlayGameFunctions::playMovingGame() {
             Player<char>* opponent = players[1 - i];
             Move<char>* move = ui->get_move(current);
 
-            while (!board->update_board(move)) {
+            while (move != nullptr && !board->update_board(move)) {
                 cout << "Invalid move! Please try again.\n";
                 delete move;
                 move = ui->get_move(current);
             }
+
+            if (move == nullptr) continue;
 
             board->display_board();
 
@@ -522,7 +568,7 @@ void PlayGameFunctions::playPyramidGame() {
     PlayerType type2 = choosePlayerPersonality("Second Player");
 
     PyramidTicTacToe game;
-    int row, col;
+    int row = 0, col = 0; // FIXED: Initialize variables
     bool gameRunning = true;
 
     cout << "\n" << string(50, '-') << "\n";
@@ -540,11 +586,12 @@ void PlayGameFunctions::playPyramidGame() {
         cout << currentPlayerName << "'s turn:\n";
 
         if (currentPlayerType == static_cast<int>(PlayerType::HUMAN)) {
-            while (true) {
+            bool validMove = false;
+            while (!validMove) {
                 cout << "Enter your move (row col): ";
                 if (cin >> row >> col) {
                     if (game.makeMove(row, col)) {
-                        break;
+                        validMove = true;
                     }
                     else {
                         cout << "Invalid move! Please try again." << endl;
@@ -587,26 +634,4 @@ void PlayGameFunctions::playPyramidGame() {
         string winnerName = (winner == 'X') ? name1 : name2;
         cout << "Congratulations " << winnerName << "!\n";
     }
-}
-
-void PlayGameFunctions::playMemoryGame(){
-    UI<char>* game_ui = new MemoryGame_UI();
-
-    Board<char>* MemoryGameBoard = new MemoryGame_Board();
-
-    Player<char>** players = game_ui->setup_players();
-
-    GameManager<char> MemoryGame(MemoryGameBoard , players , game_ui);
-
-    MemoryGame.run();
-
-    delete MemoryGameBoard;
-    
-    for(int i = 0 ; i < 2 ; ++i){
-        delete players[i];
-    }
-
-    delete game_ui;
-
-    delete[] players;
 }

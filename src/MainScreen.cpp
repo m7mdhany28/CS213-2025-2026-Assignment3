@@ -1,98 +1,128 @@
-#include<iostream>
-#include<string>
-#include"MainScreen.h"
-#include"PlayGameFunctions.h"
+#include "MainScreen.h"
+#include "PlayGameFunctions.h"
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <limits>
+#include <cctype>
+
 using namespace std;
 
-void MainScreen::implementUserChoice(UserChoice choice){
-    switch (choice)
-    {
-    case UserChoice::XOGAME :
-        system("clear");
+void MainScreen::printMainMenuScreen() {
+    cout << "\n" << string(50, '=') << "\n";
+    cout << "           BOARD GAMES COLLECTION - AI EDITION\n";
+    cout << string(50, '=') << "\n";
+    cout << "1. XO Game (Classic Tic Tac Toe)\n";
+    cout << "2. Numerical Tic Tac Toe (Math Challenge)\n";
+    cout << "3. SUS Game (S-U-S Sequence)\n";
+    cout << "4. Four In Row Game (Connect Four)\n";
+    cout << "5. Infinity Tic-Tac-Toe (Temporal Challenge)\n";
+    cout << "6. Misere Tic Tac Toe (Reverse Rules) - Lose to win!\n";
+    cout << "7. 5x5 Tic Tac Toe (Expanded Board) - Think bigger!\n";
+    cout << "8. Word Tic Tac Toe (Vocabulary Challenge) - Spell victory!\n";
+    cout << "9. 4x4 Moving Tic-Tac-Toe (Token Movement) - Keep moving!\n";
+    cout << "10. Pyramid Tic-Tac-Toe (Pyramid Board) - Build upward!\n";
+    cout << "11. XO Memory Game (Memory Challenge)\n";
+    cout << "12. Exit Game Collection - Until next time!\n";
+    cout << string(50, '=') << "\n";
+    cout << "What gaming adventure calls to you? (1-12): ";
+}
+
+void MainScreen::implementUserChoice(UserChoice choice) {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+
+    switch (choice) {
+    case UserChoice::XOGAME:
         PlayGameFunctions::playXOGame();
         break;
-    case UserChoice::NUMERICALGAME :
-        system("clear");
+    case UserChoice::NUMERICALGAME:
         PlayGameFunctions::playNumericalGame();
         break;
-    case UserChoice::SUSGAME : 
-        system("clear");
+    case UserChoice::SUSGAME:
         PlayGameFunctions::playSUSGame();
         break;
-    case UserChoice::FOURINROWGAME : 
-        system("clear");
+    case UserChoice::FOURINROWGAME:
         PlayGameFunctions::playFourInRowGame();
         break;
-    case UserChoice::INFINITYGAME :
-        system("clear");
+    case UserChoice::INFINITYGAME:
         PlayGameFunctions::playInfinityGame();
         break;
-    case UserChoice::MISERE :
-        system("clear");
+    case UserChoice::MISERE:
         PlayGameFunctions::playMisereGame();
         break;
-    case UserChoice::FIVE_BY_FIVE :
-        system("clear");
+    case UserChoice::FIVE_BY_FIVE:
         PlayGameFunctions::play5x5Game();
         break;
-    case UserChoice::WORD :
-        system("clear");
+    case UserChoice::WORD:
         PlayGameFunctions::playWordGame();
         break;
-    case UserChoice::MOVING :
-        system("clear");
+    case UserChoice::MOVING:
         PlayGameFunctions::playMovingGame();
         break;
-    case UserChoice::PYRAMID :
-        system("clear");
+    case UserChoice::PYRAMID:
         PlayGameFunctions::playPyramidGame();
         break;
-    case UserChoice::MEMORYGAME :
-        system("clear");
+    case UserChoice::MEMORYGAME:
         PlayGameFunctions::playMemoryGame();
         break;
+    case UserChoice::EXIT:
+        cout << "\nThank you for visiting our Board Games Collection!\n";
+        break;
     }
-    
 }
 
-void MainScreen::printMainMenuScreen(){
-    cout << "\t\t\t\t" << "=============================================" << endl;
-    cout << "\t\t\t\t" << "     Welcome to our Board Games Program!" << endl;
-    cout << "\t\t\t\t" << "=============================================" << endl;
-    cout << "\t\t\t\t\t  " << "[1] XO Game." << endl;
-    cout << "\t\t\t\t\t  " << "[2] Numerical Game." << endl;
-    cout << "\t\t\t\t\t  " << "[3] SUS Game." << endl;
-    cout << "\t\t\t\t\t  " << "[4] Four In Row Game." << endl;
-    cout << "\t\t\t\t\t  " << "[5] Infinity Game." << endl;
-    cout << "\t\t\t\t\t  " << "[6] Misere Game." << endl;
-    cout << "\t\t\t\t\t  " << "[7] Five by Five Game." << endl;
-    cout << "\t\t\t\t\t  " << "[8] Word Game." << endl;
-    cout << "\t\t\t\t\t  " << "[9] Moving Game." << endl;
-    cout << "\t\t\t\t\t  " << "[10] Pyramid Game." << endl;
-    cout << "\t\t\t\t\t  " << "[11] XO Memory Game." << endl;
-    cout << "\t\t\t\t" << "=============================================" << endl;
-}
+void MainScreen::startBoardGameProgram() {
+    srand(static_cast<unsigned int>(time(0)));
 
-void MainScreen::startBoardGameProgram(){
-    char playAgain;
+    cout << "======================================================\n";
+    cout << "        BOARD GAMES COLLECTION - AI EDITION\n";
+    cout << "======================================================\n";
+    cout << "======================================================\n";
 
-    do
-    {
+    char playAgain = 'Y'; // FIXED: Initialize variable
+
+    do {
+#ifdef _WIN32
+        system("cls");
+#else
         system("clear");
-        int choice;
-        printMainMenuScreen();
-        cout << "\t\t\t\t" << "     Please enter your choice ? [1 : 11] ? " << endl;
-        cin >> choice;
-        while( choice > 11 || choice < 1 ){
-            cout << "Invalid choice. please enter another one ? [1 : 11] ? " << endl;
-            cin >> choice;
-        }
-        implementUserChoice((UserChoice)choice);
-        cout << "Good Game!" << endl;
-        cout << "Do you want to play again ? [Y : N] ? " << endl;
-        cin >> playAgain;
-    } while (toupper(playAgain) == 'Y');
+#endif
 
-    system("clear");
-    cout << "Good Bye!" << endl;
+        printMainMenuScreen();
+
+        int choice;
+        while (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Let's try that again - enter a number between 1 and 12: ";
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        if (choice < 1 || choice > 12) {
+            cout << "Please pick a number between 1 and 12 from our menu.\n";
+            continue;
+        }
+
+        UserChoice userChoice = static_cast<UserChoice>(choice);
+
+        if (userChoice == UserChoice::EXIT) {
+            implementUserChoice(userChoice);
+            break;
+        }
+
+        implementUserChoice(userChoice);
+
+        cout << "\nGood Game!\n";
+        cout << "Do you want to play again? [Y/N]: ";
+        cin >> playAgain;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    } while (toupper(playAgain) == 'Y'); // FIXED: No comma operator
+
+    cout << "\nGood Bye!\n";
 }

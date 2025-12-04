@@ -1,12 +1,6 @@
-#include<iostream>
-#include"MainScreen.h"
-using namespace std;
+#include "MainScreen.h"
 
-int main(){
-    
-    srand(static_cast<unsigned int>(time(0)));
-
+int main() {
     MainScreen::startBoardGameProgram();
-
     return 0;
 }
