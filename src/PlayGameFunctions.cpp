@@ -21,6 +21,7 @@
 #include <limits>
 #include"MemoryGame_Board.h"
 #include"MemoryGame_UI.h"
+#include"Diamond_Classes.h"
 
 using namespace std;
 
@@ -634,4 +635,55 @@ void PlayGameFunctions::playPyramidGame() {
         string winnerName = (winner == 'X') ? name1 : name2;
         cout << "Congratulations " << winnerName << "!\n";
     }
+}
+
+void PlayGameFunctions::playDiamondGame(){
+    UI<char>* game_ui = new Diamond_UI();
+
+    // Create the game board - Diamond shape on 5x5 grid
+    Board<char>* diamond_board = new Diamond_Board();
+
+    // Use the UI to set up the players for the game
+    Player<char>** players = game_ui->setup_players();
+
+    // Create the game manager with the board and the array of players
+    GameManager<char> diamond_game(diamond_board, players, game_ui);
+
+    // Display game instructions
+    cout << "\n=== Diamond Tic-Tac-Toe Rules ===\n";
+    cout << "1. The board is arranged in a diamond shape (5x5 grid)\n";
+    cout << "2. Players take turns placing X or O on valid positions\n";
+    cout << "3. To WIN: Complete BOTH a line of 3 AND a line of 4 simultaneously\n";
+    cout << "4. The two lines must be in different directions\n";
+    cout << "5. They can share one common mark\n";
+    cout << "6. Lines can be horizontal, vertical, or diagonal\n";
+    cout << "\nValid positions:\n";
+    cout << "  Row 0: column 2 only\n";
+    cout << "  Row 1: columns 1, 2, 3\n";
+    cout << "  Row 2: columns 0, 1, 2, 3, 4 (full row)\n";
+    cout << "  Row 3: columns 1, 2, 3\n";
+    cout << "  Row 4: column 2 only\n";
+    cout << "\nPress Enter to start...";
+    cin.ignore();
+    cin.get();
+
+    // Run the game loop
+    diamond_game.run();
+
+    // --- Cleanup ---
+    // Delete the dynamically allocated board object
+    delete diamond_board;
+
+    // Delete the individual player objects
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    
+    // Delete the dynamically allocated array of player pointers
+    delete[] players;
+
+    // Delete the UI object
+    delete game_ui;
+
+    cout << "\nThank you for playing Diamond Tic-Tac-Toe!\n";
 }

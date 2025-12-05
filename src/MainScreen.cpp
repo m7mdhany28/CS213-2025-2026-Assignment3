@@ -24,7 +24,8 @@ void MainScreen::printMainMenuScreen() {
     cout << "9. 4x4 Moving Tic-Tac-Toe (Token Movement) - Keep moving!\n";
     cout << "10. Pyramid Tic-Tac-Toe (Pyramid Board) - Build upward!\n";
     cout << "11. XO Memory Game (Memory Challenge)\n";
-    cout << "12. Exit Game Collection - Until next time!\n";
+    cout << "12. Diamond Game\n";
+    cout << "13. Exit Game Collection - Until next time!\n";
     cout << string(50, '=') << "\n";
     cout << "What gaming adventure calls to you? (1-12): ";
 }
@@ -72,6 +73,9 @@ void MainScreen::implementUserChoice(UserChoice choice) {
         break;
     case UserChoice::EXIT:
         cout << "\nThank you for visiting our Board Games Collection!\n";
+        break;
+    case UserChoice::DIAMONDGAME :
+        PlayGameFunctions::playDiamondGame();
         break;
     }
 }

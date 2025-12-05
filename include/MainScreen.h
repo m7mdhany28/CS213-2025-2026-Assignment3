@@ -16,7 +16,8 @@ private:
         MOVING = 9,
         PYRAMID = 10,
         MEMORYGAME = 11,
-        EXIT = 12
+        DIAMONDGAME = 12,
+        EXIT = 13
     };
 
 public:

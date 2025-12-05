@@ -21,6 +21,7 @@ public:
     static void playMovingGame();
     static void playPyramidGame();
     static void playMemoryGame();
+    static void playDiamondGame();
 };
 
 #endif
