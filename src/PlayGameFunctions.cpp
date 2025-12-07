@@ -5,7 +5,6 @@
 #include"BoardGame_Classes.h"
 #include"Numerical_Board.h"
 #include"Numerical_UI.h"
-#include "XO_Classes.h"
 #include"SUS_Board.h"
 #include"SUS_UI.h"
 #include"FourInRow_UI.h"
@@ -22,6 +21,8 @@
 #include"MemoryGame_Board.h"
 #include"MemoryGame_UI.h"
 #include"Diamond_Classes.h"
+#include"XO_Board.h"
+#include"XO_UI.h"
 
 using namespace std;
 
