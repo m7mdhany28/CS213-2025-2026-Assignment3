@@ -131,7 +131,8 @@ public:
 
     /**
      * @brief Override to display the board in diamond shape format.
-     */
+
+    */
     void display_board_matrix(const vector<vector<char>>& matrix) const;
 };
 
