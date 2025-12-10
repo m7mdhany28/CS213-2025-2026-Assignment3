@@ -34,6 +34,7 @@ Doxygen-generated HTML pages for all classes.
 
 **Games Included**
 Game	Title
+
 1	    SUS
 
 2    	Four-in-a-Row
@@ -93,6 +94,7 @@ CMakeLists.txt
 ---
 
 **Extras**
+
 🎥 Demo Video: https://drive.google.com/file/d/13QwdwuzUo4wx4aV69o8ZKRLfc4LTh586/view?usp=drive_link
 
 📄 Docs Report: https://docs.google.com/document/d/1OKsIJxDTmNpyvuXhCipw-QV29eOW7eV4-QpNDxI-f6o/edit?usp=drive_link
