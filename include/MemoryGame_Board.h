@@ -3,7 +3,7 @@
 
 #include"BoardGame_Classes.h"
 
-class MemoryGame_Board : public Board<char>{
+class MemoryGame_Board : public Board<char> {
 
 private:
     char blank_symbol = '.';
@@ -19,7 +19,7 @@ public:
     bool is_lose(Player<char>*) { return false; };
 
     bool is_draw(Player<char>* player);
-    
+
     bool game_is_over(Player<char>* player);
 };
 

@@ -1,4 +1,4 @@
-// BoardGame_classes.h
+﻿// BoardGame_classes.h
 // Version 2.3
 // Date: 25 Nov 2023
 // Author: Mohammad El-Ramly
@@ -55,7 +55,8 @@ public:
      * @brief Construct a board with given dimensions.
      */
     Board(int rows, int columns)
-        : rows(rows), columns(columns), board(rows, vector<T>(columns)) {}
+        : rows(rows), columns(columns), board(rows, vector<T>(columns)) {
+    }
 
     /**
      * @brief Virtual destructor. Frees allocated board memory.
@@ -148,7 +149,8 @@ public:
      * @brief Construct a player with name, symbol, and type.
      */
     Player(string n, T s, PlayerType t)
-        : name(n), symbol(s), type(t), boardPtr(nullptr) {}
+        : name(n), symbol(s), type(t), boardPtr(nullptr) {
+    }
 
     virtual ~Player() {}
 
@@ -206,7 +208,7 @@ public:
      * @brief Construct the UI and display a welcome message.
      */
     UI(int cell_display_width = 3) : cell_width(cell_display_width) {}
-    
+
     /**
      * @brief Construct the UI and display a welcome message.
      */

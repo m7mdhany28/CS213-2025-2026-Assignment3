@@ -2,11 +2,9 @@
 #ifndef PLAY_GAME_FUNCTIONS_H
 #define PLAY_GAME_FUNCTIONS_H
 
-#include "BoardGame_Classes.h"
 #include <string>
 
-std::string getPlayerIdentity(const std::string& playerLabel);
-PlayerType choosePlayerPersonality(const std::string& playerLabel);
+enum class PlayerType;
 
 class PlayGameFunctions {
 public:
@@ -14,14 +12,15 @@ public:
     static void playNumericalGame();
     static void playSUSGame();
     static void playFourInRowGame();
-    static void playInfinityGame();
+    static void playMemoryGame();
     static void playMisereGame();
     static void play5x5Game();
     static void playWordGame();
+    static void playInfinityGame();
     static void playMovingGame();
     static void playPyramidGame();
-    static void playMemoryGame();
     static void playDiamondGame();
+    static void playUltimateGame(); // Add this line
 };
 
 #endif

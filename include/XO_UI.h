@@ -11,7 +11,7 @@ public:
 
     Player<char>* create_player(string& name, char symbol, PlayerType type);
 
-    int min_max(Board<char>* current_board , int depth , bool is_max , char AI_symbol , char human_symbol);
+    int min_max(Board<char>* current_board, int depth, bool is_max, char AI_symbol, char human_symbol);
 
     Move<char>* get_AI_move(Player<char>* AI_player);
 

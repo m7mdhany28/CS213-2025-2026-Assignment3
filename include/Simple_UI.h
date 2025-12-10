@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef SIMPLE_UI_H
 #define SIMPLE_UI_H
 
@@ -18,6 +18,8 @@
 #include <map>
 #include <unordered_map>
 #include <stack>
+
+
 
 class Simple_UI : public UI<char> {
 private:
@@ -332,142 +334,69 @@ private:
     }
 
     // ========== WORD GAME (Fixed word detection) ==========
-    // ========== WORD GAME (Fixed with proper word strategy) ==========
+ 
 
     Move<char>* get_enhanced_word_move(Player<char>* player) {
-        WordTicTacToe_Board* word_board = dynamic_cast<WordTicTacToe_Board*>(game_board);
-        if (!word_board) {
-            return get_fallback_move(player);
-        }
-
+        char symbol = player->get_symbol();
+        char opponent = (symbol == 'A') ? 'B' : 'A';
         vector<vector<char>> board = game_board->get_board_matrix();
-        char player_symbol = player->get_symbol();
 
-        cout << player->get_name() << " analyzing word possibilities...\n";
+        cout << player->get_name() << " analyzing word board...\n";
 
-        // Find all empty positions
-        vector<pair<int, int>> empty_positions;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board[i][j] == 0) {
-                    empty_positions.push_back({ i, j });
-                }
-            }
-        }
-
-        if (empty_positions.empty()) {
+        // Cast to WordTicTacToe_Board to access dictionary methods
+        WordTicTacToe_Board* wordBoard = dynamic_cast<WordTicTacToe_Board*>(game_board);
+        if (!wordBoard) {
             return get_fallback_move(player);
         }
 
-        // STRATEGY 1: Try to complete a word if possible
-        // Common word endings to look for
-        vector<pair<string, char>> common_endings = {
-            {"A", 'T'},  // _AT words
-            {"T", 'A'},  // TA_ words  
-            {"A", 'R'},  // _AR words
-            {"R", 'A'},  // RA_ words
-            {"A", 'N'},  // _AN words
-            {"I", 'N'},  // _IN words
-            {"E", 'T'},  // _ET words
-            {"O", 'G'},  // _OG words
-            {"U", 'P'},  // _UP words
-            {"A", 'D'},  // _AD words
-        };
+        // Get valid moves according to dictionary
+        vector<pair<int, int>> validMoves = wordBoard->getValidLetterPositions(symbol);
 
-        for (auto& pos : empty_positions) {
-            int row = pos.first;
-            int col = pos.second;
+        if (validMoves.empty()) {
+            cout << "No valid word moves available!\n";
+            return get_fallback_move(player);
+        }
 
-            // Check row completion
-            if (col == 0 || col == 2) {
-                string row_letters = "";
-                for (int c = 0; c < 3; c++) {
-                    row_letters += (board[row][c] == 0) ? ' ' : board[row][c];
-                }
+        // STRATEGY 1: Check for immediate word completion
+        for (auto& pos : validMoves) {
+            // Test if placing here would complete a valid word
+            board[pos.first][pos.second] = symbol;
 
-                // Try to find a letter that completes this row
-                for (char letter = 'A'; letter <= 'Z'; letter++) {
-                    string test_row = row_letters;
-                    if (col == 0) test_row[0] = letter;
-                    else if (col == 2) test_row[2] = letter;
+            // Check if this creates a complete valid word
+            WordTicTacToe_Board tempBoard = *wordBoard;
+            Move<char> testMove(pos.first, pos.second, symbol);
+            tempBoard.update_board(&testMove);
 
-                    if (test_row.find(' ') == string::npos) {
-                        // Check if this forms a valid word
-                        transform(test_row.begin(), test_row.end(), test_row.begin(), ::toupper);
-                        // Common word check
-                        vector<string> common = { "CAT", "DOG", "BAT", "RAT", "MAT", "HAT", "BIT", "FIT", "SIT" };
-                        if (find(common.begin(), common.end(), test_row) != common.end()) {
-                            cout << "Completing word '" << test_row << "' with '" << letter << "' at " << row << " " << col << "\n";
-                            return new Move<char>(row, col, letter);
-                        }
-                    }
-                }
+            auto validWords = tempBoard.getAllValidWords();
+            if (!validWords.empty()) {
+                cout << "Completing word at: " << pos.first << " " << pos.second << "\n";
+                return new Move<char>(pos.first, pos.second, symbol);
             }
 
-            // Check column completion
-            if (row == 0 || row == 2) {
-                string col_letters = "";
-                for (int r = 0; r < 3; r++) {
-                    col_letters += (board[r][col] == 0) ? ' ' : board[r][col];
-                }
+            board[pos.first][pos.second] = '.';
+        }
 
-                for (char letter = 'A'; letter <= 'Z'; letter++) {
-                    string test_col = col_letters;
-                    if (row == 0) test_col[0] = letter;
-                    else if (row == 2) test_col[2] = letter;
+        // STRATEGY 2: Take strategic positions
+        // Center is most valuable
+        if (find(validMoves.begin(), validMoves.end(), make_pair(1, 1)) != validMoves.end()) {
+            cout << "Taking center: 1 1\n";
+            return new Move<char>(1, 1, symbol);
+        }
 
-                    if (test_col.find(' ') == string::npos) {
-                        transform(test_col.begin(), test_col.end(), test_col.begin(), ::toupper);
-                        vector<string> common = { "CAT", "DOG", "BAT", "RAT", "MAT", "HAT", "BIT", "FIT", "SIT" };
-                        if (find(common.begin(), common.end(), test_col) != common.end()) {
-                            cout << "Completing word '" << test_col << "' with '" << letter << "' at " << row << " " << col << "\n";
-                            return new Move<char>(row, col, letter);
-                        }
-                    }
-                }
+        // Corners
+        vector<pair<int, int>> corners = { {0,0}, {0,2}, {2,0}, {2,2} };
+        for (auto& corner : corners) {
+            if (find(validMoves.begin(), validMoves.end(), corner) != validMoves.end()) {
+                cout << "Taking corner: " << corner.first << " " << corner.second << "\n";
+                return new Move<char>(corner.first, corner.second, symbol);
             }
         }
 
-        // STRATEGY 2: Place strategic letters
-        // Position-based letter placement
-        vector<char> vowels = { 'A', 'E', 'I', 'O', 'U' };
-        vector<char> common_consonants = { 'T', 'N', 'S', 'R', 'L', 'D', 'C', 'M', 'P', 'B' };
-
-        for (auto& pos : empty_positions) {
-            int row = pos.first;
-            int col = pos.second;
-
-            char letter;
-
-            // Center gets vowel (good for many words)
-            if (row == 1 && col == 1) {
-                letter = vowels[rand() % vowels.size()];
-                cout << "Placing vowel '" << letter << "' in center at " << row << " " << col << "\n";
-                return new Move<char>(row, col, letter);
-            }
-            // Corners get common consonants
-            else if ((row == 0 && col == 0) || (row == 0 && col == 2) ||
-                (row == 2 && col == 0) || (row == 2 && col == 2)) {
-                letter = common_consonants[rand() % common_consonants.size()];
-                cout << "Placing consonant '" << letter << "' in corner at " << row << " " << col << "\n";
-                return new Move<char>(row, col, letter);
-            }
-            // Edges get flexible letters
-            else {
-                // Mix of vowels and consonants for edges
-                if (rand() % 3 == 0) {
-                    letter = vowels[rand() % vowels.size()];
-                }
-                else {
-                    letter = common_consonants[rand() % common_consonants.size()];
-                }
-                cout << "Placing '" << letter << "' at edge " << row << " " << col << "\n";
-                return new Move<char>(row, col, letter);
-            }
-        }
-
-        // Fallback
-        return get_fallback_move(player);
+        // Any valid move
+        int idx = rand() % validMoves.size();
+        auto pos = validMoves[idx];
+        cout << "Random valid move at: " << pos.first << " " << pos.second << "\n";
+        return new Move<char>(pos.first, pos.second, symbol);
     }
 
     // ========== INFINITY GAME ==========
@@ -532,7 +461,7 @@ private:
         return get_fallback_move(player);
     }
 
-    // ========== 4×4 MOVING GAME (Fixed movement logic) ==========
+    // ========== 4ï¿½4 MOVING GAME (Fixed movement logic) ==========
 
     Move<char>* get_enhanced_4x4_move(Player<char>* player) {
         FourByFour_Moving_Board* moving_board = dynamic_cast<FourByFour_Moving_Board*>(game_board);

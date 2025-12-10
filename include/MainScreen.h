@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #ifndef MAIN_SCREEN_H
 #define MAIN_SCREEN_H
 
@@ -17,7 +17,8 @@ private:
         PYRAMID = 10,
         MEMORYGAME = 11,
         DIAMONDGAME = 12,
-        EXIT = 13
+        ULTIMATE = 13,  
+        EXIT = 14       
     };
 
 public:

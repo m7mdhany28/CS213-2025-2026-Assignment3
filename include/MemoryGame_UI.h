@@ -3,8 +3,8 @@
 
 #include"BoardGame_Classes.h"
 
-class MemoryGame_UI : public UI<char>{
-public : 
+class MemoryGame_UI : public UI<char> {
+public:
     MemoryGame_UI();
 
     ~MemoryGame_UI() {};
