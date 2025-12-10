@@ -10,7 +10,7 @@ Player<int>* Numerical_UI::create_player(string& name, int symbol, PlayerType ty
 
     cout << "Creating " << (type == PlayerType::HUMAN ? "Human" : "Computer")
         << " player : " << name << " (" << num_type << ")" << endl;
-    return new Player<int>(name, symbol, type); 
+    return new Player<int>(name, symbol, type);
 }
 
 Move<int>* Numerical_UI::get_move(Player<int>* player) {

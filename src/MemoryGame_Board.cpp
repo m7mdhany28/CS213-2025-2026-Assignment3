@@ -1,8 +1,8 @@
-#include<iostream>
+﻿#include<iostream>
 #include"BoardGame_Classes.h"
 #include"MemoryGame_Board.h"
 
-MemoryGame_Board::MemoryGame_Board() : Board(3, 3) , fact_board(3 , vector<char>(3)) {
+MemoryGame_Board::MemoryGame_Board() : Board(3, 3), fact_board(3, vector<char>(3)) {
     for (auto& row : board)
         for (auto& cell : row)
             cell = blank_symbol;

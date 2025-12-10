@@ -25,9 +25,10 @@ void MainScreen::printMainMenuScreen() {
     cout << "10. Pyramid Tic-Tac-Toe (Pyramid Board) - Build upward!\n";
     cout << "11. XO Memory Game (Memory Challenge)\n";
     cout << "12. Diamond Game\n";
-    cout << "13. Exit Game Collection - Until next time!\n";
+    cout << "13. Ultimate Tic Tac Toe (9 Boards in 1) - Meta Challenge!\n";
+    cout << "14. Exit Game Collection - Until next time!\n";
     cout << string(50, '=') << "\n";
-    cout << "What gaming adventure calls to you? (1-12): ";
+    cout << "What gaming adventure calls to you? (1-14): ";
 }
 
 void MainScreen::implementUserChoice(UserChoice choice) {
@@ -71,11 +72,14 @@ void MainScreen::implementUserChoice(UserChoice choice) {
     case UserChoice::MEMORYGAME:
         PlayGameFunctions::playMemoryGame();
         break;
+    case UserChoice::DIAMONDGAME:
+        PlayGameFunctions::playDiamondGame();
+        break;
+    case UserChoice::ULTIMATE:
+        PlayGameFunctions::playUltimateGame(); // Need to add this to PlayGameFunctions
+        break;
     case UserChoice::EXIT:
         cout << "\nThank you for visiting our Board Games Collection!\n";
-        break;
-    case UserChoice::DIAMONDGAME :
-        PlayGameFunctions::playDiamondGame();
         break;
     }
 }
@@ -88,7 +92,7 @@ void MainScreen::startBoardGameProgram() {
     cout << "======================================================\n";
     cout << "======================================================\n";
 
-    char playAgain = 'Y'; // FIXED: Initialize variable
+    char playAgain = 'Y';
 
     do {
 #ifdef _WIN32
@@ -103,12 +107,12 @@ void MainScreen::startBoardGameProgram() {
         while (!(cin >> choice)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Let's try that again - enter a number between 1 and 12: ";
+            cout << "Let's try that again - enter a number between 1 and 14: ";
         }
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        if (choice < 1 || choice > 12) {
-            cout << "Please pick a number between 1 and 12 from our menu.\n";
+        if (choice < 1 || choice > 14) {
+            cout << "Please pick a number between 1 and 14 from our menu.\n";
             continue;
         }
 
@@ -126,7 +130,7 @@ void MainScreen::startBoardGameProgram() {
         cin >> playAgain;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    } while (toupper(playAgain) == 'Y'); // FIXED: No comma operator
+    } while (toupper(playAgain) == 'Y');
 
     cout << "\nGood Bye!\n";
 }

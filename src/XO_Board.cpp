@@ -53,11 +53,11 @@ bool X_O_Board::is_draw(Player<char>* player) {
     return (n_moves == 9 && !is_win(player));
 }
 
-bool X_O_Board::is_lose(Player<char>* player){
+bool X_O_Board::is_lose(Player<char>* player) {
     char sym;
-    if( player->get_symbol() == 'X' )
+    if (player->get_symbol() == 'X')
         sym = 'O';
-    else 
+    else
         sym = 'X';
 
     auto all_equal = [&](char a, char b, char c) {

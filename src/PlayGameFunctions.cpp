@@ -23,6 +23,7 @@
 #include"Diamond_Classes.h"
 #include"XO_Board.h"
 #include"XO_UI.h"
+#include "UltimateTicTacToe_UI.h"
 
 using namespace std;
 
@@ -39,7 +40,37 @@ string getPlayerIdentity(const string& playerLabel) {
     }
     return name;
 }
+void PlayGameFunctions::playUltimateGame() {
+    cout << "\n" << string(60, '=') << "\n";
+    cout << "      ULTIMATE TIC TAC TOE - META CHALLENGE!\n";
+    cout << string(60, '=') << "\n";
+    cout << "9 Boards in 1 Game - Win the small boards to win the big one!\n";
+    cout << "Rules:\n";
+    cout << "1. Play in any board to start\n";
+    cout << "2. Your next move must be in the board corresponding to your last move\n";
+    cout << "3. Win a small board by getting 3 in a row\n";
+    cout << "4. Win the game by winning 3 small boards in a row on the main board\n";
+    cout << string(60, '=') << "\n";
 
+    UltimateTicTacToe_UI* game_ui = new UltimateTicTacToe_UI();
+    UltimateTicTacToe_Board* ultimate_board = new UltimateTicTacToe_Board();
+    Player<char>** players = game_ui->setup_players();
+
+    {
+        GameManager<char> ultimate_game(ultimate_board, players, game_ui);
+        ultimate_game.run();
+    }
+
+    // Cleanup
+    delete ultimate_board;
+    for (int i = 0; i < 2; ++i) {
+        delete players[i];
+    }
+    delete[] players;
+    delete game_ui;
+
+    cout << "\nThank you for playing Ultimate Tic Tac Toe!\n";
+}
 PlayerType choosePlayerPersonality(const string& playerLabel) {
     int choice = 0; // FIXED: Initialize variable
     cout << "\nWhat kind of player should " << playerLabel << " be?\n";
@@ -341,8 +372,10 @@ void PlayGameFunctions::playWordGame() {
     cout << "          WORD TIC TAC TOE - VOCABULARY CHALLENGE\n";
     cout << string(60, '=') << "\n";
 
-    WordTicTacToe_Board* board = new WordTicTacToe_Board();
-    Simple_UI* ui = new Simple_UI(board, "word");
+    WordTicTacToe_Board* word_board = new WordTicTacToe_Board();
+
+    // Use Simple_UI with proper initialization
+    Simple_UI* ui = new Simple_UI(word_board, "word");
 
     cout << "\nConfiguring first player:\n";
     string name1 = getPlayerIdentity("First Player");
@@ -352,63 +385,61 @@ void PlayGameFunctions::playWordGame() {
     string name2 = getPlayerIdentity("Second Player");
     PlayerType type2 = choosePlayerPersonality("Second Player");
 
-    // FIXED: Proper template instantiation
     Player<char>* players[2] = {
-        new Player<char>(name1, '?', type1),
-        new Player<char>(name2, '?', type2)
+        new Player<char>(name1, 'A', type1),
+        new Player<char>(name2, 'B', type2)
     };
 
     cout << "\n" << string(50, '-') << "\n";
-    cout << "GAME STARTING: " << name1 << " vs " << name2 << "\n";
+    cout << "GAME STARTING: " << name1 << " (A) vs " << name2 << " (B)\n";
     cout << string(50, '-') << "\n";
 
-    ui->display_board_matrix(board->get_board_matrix());
+    // Create a simple game loop
+    int current_player = 0;
+    bool game_over = false;
 
-    while (true) {
-        for (int i = 0; i < 2; i++) {
-            Player<char>* current = players[i];
-            Player<char>* opponent = players[1 - i];
-            Move<char>* move = ui->get_move(current);
+    while (!game_over) {
+        Player<char>* current = players[current_player];
 
-            while (move != nullptr && !board->update_board(move)) {
-                cout << "That move cannot be made. The position may be already occupied or invalid.\n";
-                delete move;
-                move = ui->get_move(current);
-            }
+        // Display board
+        ui->display_board_matrix(word_board->get_board_matrix());
 
-            if (move == nullptr) continue;
+        // Get move
+        Move<char>* move = ui->get_move(current);
 
-            ui->display_board_matrix(board->get_board_matrix());
-
-            if (board->is_win(current)) {
-                string winning_word = "WIN";
-                cout << "\n" << string(50, '=') << "\n";
-                cout << "GAME OVER - WORD FOUND!\n";
-                cout << string(50, '=') << "\n";
-                cout << "Winning word: " << winning_word << "\n";
-                cout << "WINNER: " << current->get_name() << "!\n";
-                cout << "Congratulations for forming a valid word!\n";
-                cout << string(50, '=') << "\n";
-                delete move;
-                goto game_over;
-            }
-
-            if (board->is_draw(current)) {
-                cout << string(50, '=') << "\n";
-                cout << "GAME OVER - FINAL RESULT\n";
-                cout << string(50, '=') << "\n";
-                cout << "The game ends in a draw!\n";
-                cout << "No valid three-letter words were formed on the board.\n";
-                cout << string(50, '=') << "\n";
-                delete move;
-                goto game_over;
+        if (move != nullptr) {
+            if (word_board->update_board(move)) {
+                // Check for win
+                if (word_board->is_win(current)) {
+                    ui->display_board_matrix(word_board->get_board_matrix());
+                    cout << "\n" << string(50, '=') << "\n";
+                    cout << "GAME OVER - WORD FOUND!\n";
+                    cout << string(50, '=') << "\n";
+                    cout << current->get_name() << " formed three '" << current->get_symbol() << "' in a row!\n";
+                    cout << "WINNER: " << current->get_name() << "!\n";
+                    cout << string(50, '=') << "\n";
+                    game_over = true;
+                }
+                // Check for draw
+                else if (word_board->is_draw(current)) {
+                    ui->display_board_matrix(word_board->get_board_matrix());
+                    cout << string(50, '=') << "\n";
+                    cout << "GAME OVER - FINAL RESULT\n";
+                    cout << string(50, '=') << "\n";
+                    cout << "The game ends in a draw!\n";
+                    cout << string(50, '=') << "\n";
+                    game_over = true;
+                }
             }
             delete move;
         }
+
+        // Switch player
+        current_player = 1 - current_player;
     }
 
-game_over:
-    delete board;
+    // Cleanup
+    delete word_board;
     delete players[0];
     delete players[1];
     delete ui;
