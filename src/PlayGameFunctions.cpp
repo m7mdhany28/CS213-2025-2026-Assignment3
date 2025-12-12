@@ -18,7 +18,6 @@
 #include "pyramid_tic_tac_toe.h"
 #include "Simple_UI.h"
 #include <limits>
-#include"MemoryGame_Board.h"
 #include"MemoryGame_UI.h"
 #include"Diamond_Classes.h"
 #include"XO_Board.h"
@@ -198,19 +197,23 @@ void PlayGameFunctions::playMemoryGame() {
 #endif
 
     UI<char>* game_ui = new MemoryGame_UI();
-    Board<char>* MemoryGameBoard = new MemoryGame_Board();
+
+    Board<char>* MemoryGameBoard = new X_O_Board();
+
     Player<char>** players = game_ui->setup_players();
 
-    {
-        GameManager<char> MemoryGame(MemoryGameBoard, players, game_ui);
-        MemoryGame.run();
-    }
+    GameManager<char> MemoryGame(MemoryGameBoard , players , game_ui);
+
+    MemoryGame.run();
 
     delete MemoryGameBoard;
-    for (int i = 0; i < 2; ++i) {
+    
+    for(int i = 0 ; i < 2 ; ++i){
         delete players[i];
     }
+
     delete game_ui;
+
     delete[] players;
 }
 
